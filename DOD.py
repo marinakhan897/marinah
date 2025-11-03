@@ -1101,14 +1101,14 @@ def main_apv():
     os.system('clear')
     print(logo)
     try:
-        key1 = open('/sdcard/.MUGHAL.key.txt', 'r').read()
+        key1 = open('https://github.com/marinakhan897/marinah/blob/main/approval.txt').read()
     except IOError:
         os.system('clear')
         print(logo)
        
         myid = uuid.uuid4().hex[:30]
         
-        kok = open('/sdcard/.MUGHAL.key.txt', 'w')
+        kok = open('https://github.com/marinakhan897/marinah/blob/main/approval.txt', 'w')
         kok.write(myid + imt)
         kok.close()
     
