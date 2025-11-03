@@ -1114,7 +1114,7 @@ def main_apv():
             kok.close()
             key1 = myid
         
-        print(' \033[1;37mYour Key : \033[1;32m' + key1)
+        print(' \033[1;37mmarinakhan : \033[1;32m' + key1)
         linex()
         
         # Approval check karo
