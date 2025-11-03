@@ -1094,40 +1094,53 @@ def Create():
        import time
        time.sleep(2)
        tpe(max_workers=10).submit(strt)
-
-
 def main_apv():
-    imt = '578'
     os.system('clear')
     print(logo)
-    try:
-        key1 = open('https://github.com/marinakhan897/marinah/blob/main/approval.txt').read()
-    except IOError:
-        os.system('clear')
-        print(logo)
-       
-        myid = uuid.uuid4().hex[:30]
-        
-        kok = open('https://github.com/marinakhan897/marinah/blob/main/approval.txt', 'w')
-        kok.write(myid + imt)
-        kok.close()
     
-        input(' Exit And Again Run The Command');os.system('python DOD.py')
-        tks = ('Hello%20MUGHAL%20Owner%20Kashif%20!!%20Please%20Approve%20My%20Key%20Key%20:%20'+key1);os.system('am start https://wa.me/+?text='+tks)
-
-    r1 = requests.get('https://mughalxddod.blogspot.com/2023/11/2023nov.html?m=1').text
-   
-    if key1 in r1:
-        menu()
-    else:
-        os.system('clear')
-        print(logo)
-        print(' \033[1;37mKey : \033[1;32m' + key1)
+    try:
+        # GitHub se approval file check karo
+        approval_url = "https://raw.githubusercontent.com/marinakhan897/marinah/main/approval.txt"
+        r1 = requests.get(approval_url, timeout=10).text.strip()
+        
+        # Device se key read karo
+        try:
+            key1 = open('/data/data/com.termux/files/usr/bin/.mrakingxxx-cov', 'r').read().strip()
+        except:
+            # Agar key file nahi hai toh nayi banayo
+            myid = uuid.uuid4().hex[:5].upper()
+            kok = open('/data/data/com.termux/files/usr/bin/.mrakingxxx-cov', 'w')
+            kok.write(myid)
+            kok.close()
+            key1 = myid
+        
+        print(' \033[1;37mYour Key : \033[1;32m' + key1)
         linex()
-        print (' \033[1;37mThis Tool is Paid So Need Get Approval') 
-       
-        print(' Payment Number Details\n 03239021979 \n Easypaisa or Jazzcash');linex()
-        input(' \033[1;37mPress Enter To send key Admin')
-        tks = ('Hello%20DOD%20Owner%20MUGHAL-XD%20!!%20Please%20Approve%20My%20Key%20Key%20:%20'+key1);os.system('am start https://wa.me/+923239021979?text='+tks)
-        main_apv()
+        
+        # Approval check karo
+        if key1 in r1:
+            print(' \033[1;32m[✓] Approval Verified - Starting Tool...')
+            time.sleep(2)
+            menu()
+        else:
+            print(' \033[1;31m[✗] Key Not Approved')
+            print(' \033[1;37mContact Admin for Approval')
+            print(' \033[1;37mWhatsApp: +923239021979')
+            linex()
+            input(' \033[1;37mPress Enter to Send Key to Admin')
+            
+            # WhatsApp message automatically send karo
+            tks = f'Hello%20DOD%20Owner%20MUGHAL-XD%20!!%20Please%20Approve%20My%20Key%20:%20{key1}'
+            os.system(f'am start https://wa.me/+923239021979?text={tks}')
+            
+            print(' \033[1;37mWaiting for approval...')
+            time.sleep(3)
+            main_apv()  # Dubara check karo
+            
+    except Exception as e:
+        # Agar online check fail ho toh direct menu show karo
+        print(' \033[1;33m[⚠] Network Error - Starting Tool Anyway...')
+        time.sleep(2)
+        menu()
+
 main_apv()
